@@ -38,10 +38,10 @@ const CreateAllFolder = require("./config/uploadFolderCreateScript");
 
 /* Create All Uploads Folder if not exists | For Uploading Images */
 CreateAllFolder();
-
+// require("./config/db");
 // Database Connection
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect("mongodb+srv://vrajshah34:1111password@cluster0.oh66gbo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -51,7 +51,7 @@ mongoose
       "==============Mongodb Database Connected Successfully=============="
     )
   )
-  .catch((err) => console.log("Database Not Connected !!!"));
+  .catch((err) => console.log("Database Not Connected !!" + err));
 
 // Middleware
 app.use(morgan("dev"));
